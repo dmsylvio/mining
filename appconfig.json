@@ -1,6 +1,6 @@
 {
-    "appName": "Auot Mining Prif",
-    "description": "Auto mine and Rebank",
+    "appName": "Auto Mining",
+    "description": "Auto mining and rebank",
     "appUrl": "./index.html",
     "configUrl": "./appconfig.json",
     "iconUrl": "./assets/favicon.png",
