@@ -1,30 +1,30 @@
-// Define a variável para contar o número de Seren stones mineradas
+// Define a variable to count the number of Seren stones mined
 let serenStoneCount = 0;
 
-// Define uma array para armazenar as Seren stones mineradas
+// Define an array to store the mined Seren stones
 let minedStones = [];
 
-// Inicie o loop de mineração
-while (serenStoneCount < 100) {
-  // Use a picareta para minerar a pedra
+// Define the function to click and mine
+function clickAndMine() {
+  // Use a pickaxe to mine the rock
   mine();
   
-  // Verifique se a pedra minerada é uma Seren stone
+  // Check if the mined rock is a Seren stone
   if (isSerenStone()) {
-    // Adicione a Seren stone à array de pedras mineradas
+    // Add the Seren stone to the array of mined stones
     minedStones.push(getMinedStone());
     
-    // Incremente o número de Seren stones mineradas
+    // Increment the number of Seren stones mined
     serenStoneCount++;
-    
-    // Gere um número aleatório entre 120 e 160 para representar o tempo de espera antes do próximo clique
-    let waitTime = Math.floor(Math.random() * (160 - 120 + 1) + 120);
-    
-    // Pause o loop de mineração por `waitTime` segundos
-    sleep(waitTime);
   }
 }
 
-// Exiba o resultado
-console.log("Total de Seren stones mineradas: " + serenStoneCount);
-console.log("Lista de Seren stones mineradas: " + minedStones);
+// Start the mining loop
+while (serenStoneCount < 100) {
+  // Call the `clickAndMine` function to perform the click and mine action
+  clickAndMine();
+}
+
+// Display the result
+console.log("Total Seren stones mined: " + serenStoneCount);
+console.log("List of Seren stones mined: " + minedStones);
