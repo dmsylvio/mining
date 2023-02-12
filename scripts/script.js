@@ -1,27 +1,30 @@
-// Initialize the mining script
-var startTime = new Date().getTime();
-var oreCounter = 0;
+// Define a variável para contar o número de Seren stones mineradas
+let serenStoneCount = 0;
 
-// Start the mining loop
-while (true) {
-  // Check if the inventory is full
-  if (alt1.invFull()) {
-    // If the inventory is full, drop all ores
-    for (var i = 0; i < 28; i++) {
-      alt1.dropInvSlot(i);
-    }
-  } else {
-    // If the inventory is not full, mine the next corrupted rock
-    alt1.clickObject(3294, 3474, "Mine corrupted rock");
-    oreCounter++;
-  }
+// Define uma array para armazenar as Seren stones mineradas
+let minedStones = [];
 
-  // Check if the script has been running for 10 minutes
-  if (new Date().getTime() - startTime > 600000) {
-    // If the script has been running for 10 minutes, stop the loop
-    break;
+// Inicie o loop de mineração
+while (serenStoneCount < 100) {
+  // Use a picareta para minerar a pedra
+  mine();
+  
+  // Verifique se a pedra minerada é uma Seren stone
+  if (isSerenStone()) {
+    // Adicione a Seren stone à array de pedras mineradas
+    minedStones.push(getMinedStone());
+    
+    // Incremente o número de Seren stones mineradas
+    serenStoneCount++;
+    
+    // Gere um número aleatório entre 120 e 160 para representar o tempo de espera antes do próximo clique
+    let waitTime = Math.floor(Math.random() * (160 - 120 + 1) + 120);
+    
+    // Pause o loop de mineração por `waitTime` segundos
+    sleep(waitTime);
   }
 }
 
-// Display the number of ores mined
-alt1.displayMessage("Mined " + oreCounter + " corrupted ores in 10 minutes.", "#00FF00");
+// Exiba o resultado
+console.log("Total de Seren stones mineradas: " + serenStoneCount);
+console.log("Lista de Seren stones mineradas: " + minedStones);
